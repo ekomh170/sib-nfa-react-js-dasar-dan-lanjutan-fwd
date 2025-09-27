@@ -1,15 +1,15 @@
 import React from 'react';
 import logoChillAjar from './assets/logo/chillajar.png';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Link, Outlet } from 'react-router-dom';
 import Home from './pages/Home';
 import Team from './pages/Team';
 import Contact from './pages/Contact';
 import './App.css';
 
-function App() {
-  // Render tampilan utama aplikasi: Navbar, Routing, dan Footer
+// Layout component untuk halaman utama dengan navbar dan footer
+function Layout() {
   return (
-    <Router>
+    <>
       {/* Navbar: logo, link navigasi, dan tombol menu mobile */}
       <nav className="navbar navbar-expand-lg navbar-modern fixed-top shadow-sm">
         <div className="container-fluid px-4">
@@ -23,26 +23,22 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/">Home</Link>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/team">Team</Link>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/team">Team</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact">Contact</Link>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/contact">Contact</NavLink>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* Routing: ganti halaman sesuai path */}
+      {/* Outlet untuk render halaman anak */}
       <div className="bg-light modern-font" style={{ paddingTop: '80px' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Outlet />
       </div>
 
       {/* Footer: info platform, link sosial, dan copyright */}
@@ -68,6 +64,21 @@ function App() {
           </div>
         </div>
       </footer>
+    </>
+  );
+}
+
+function App() {
+  // Render routing dengan layout
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="team" element={<Team />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

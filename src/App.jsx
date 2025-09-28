@@ -1,35 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logoChillAjar from './assets/logo/chillajar.png';
 import { BrowserRouter as Router, Routes, Route, NavLink, Link, Outlet } from 'react-router-dom';
 import Home from './pages/Home';
 import Team from './pages/Team';
 import Contact from './pages/Contact';
+import MemberDetail from './pages/MemberDetail';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 // Layout component untuk halaman utama dengan navbar dan footer
 function Layout() {
+  // State untuk mengelola toggle hamburger menu mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Handler untuk toggle menu hamburger
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Handler untuk menutup menu saat link navigasi diklik
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
-      {/* Navbar: logo, link navigasi, dan tombol menu mobile */}
+      {/* Navbar: logo, link navigasi, dan hamburger menu mobile */}
       <nav className="navbar navbar-expand-lg navbar-modern fixed-top shadow-sm">
         <div className="container-fluid px-4">
-          <Link className="navbar-brand d-flex align-items-center gap-2" to="/" style={{fontSize:'2rem',fontWeight:700,letterSpacing:'.5px',background:'rgba(255,255,255,0.85)',padding:'0.25rem 1rem',borderRadius:'1.5rem',boxShadow:'0 2px 8px rgba(0,0,0,0.07)'}}>
-            <img src={logoChillAjar} alt="ChillAjar Logo" style={{height:'2.2rem',width:'2.2rem',objectFit:'contain',marginRight:'0.5rem'}} />
-            <span style={{color:'#212529'}}>ChillAjar</span>
+          {/* Brand Logo */}
+          <Link className="navbar-brand-modern" to="/">
+            <img
+              src={logoChillAjar}
+              alt="ChillAjar Logo"
+              className="navbar-logo"
+            />
+            <span className="navbar-brand-text">ChillAjar</span>
           </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" style={{background:'#ffc107'}}></span>
+
+          {/* Hamburger Menu Button */}
+          <button
+            className={`navbar-toggler custom-hamburger ${isMenuOpen ? '' : 'collapsed'}`}
+            type="button"
+            onClick={toggleMenu}
+            aria-controls="navbarNav"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+
+          {/* Navigation Menu */}
+          <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Home</NavLink>
+                <NavLink
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  to="/"
+                  onClick={closeMenu}
+                >
+                  Home
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/team">Team</NavLink>
+                <NavLink
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  to="/team"
+                  onClick={closeMenu}
+                >
+                  Team
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/contact">Contact</NavLink>
+                <NavLink
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  to="/contact"
+                  onClick={closeMenu}
+                >
+                  Contact
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -42,23 +91,97 @@ function Layout() {
       </div>
 
       {/* Footer: info platform, link sosial, dan copyright */}
-      <footer className="footer-modern py-4 mt-5 text-center">
+      <footer className="footer-modern py-5 mt-5">
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-12 mb-3">
-              <h6 className="mb-1">ChillAjar</h6>
-              <p className="mb-0 small">Platform pembelajaran online yang menghubungkan siswa dengan mentor berkualitas</p>
-            </div>
-            <div className="col-12 mb-3">
-              <h6 className="mb-1">Ikuti Kami</h6>
-              <div className="d-flex justify-content-center gap-3">
-                <a href="https://www.instagram.com/chill_ajar/" title="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <div className="row g-4">
+            {/* Brand & Description */}
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="d-flex align-items-center gap-3 mb-3">
+                <img src={logoChillAjar} alt="ChillAjar Logo" style={{height:'2.5rem',width:'2.5rem',objectFit:'contain'}} />
+                <h5 className="mb-0 modern-title">ChillAjar</h5>
+              </div>
+              <p className="mb-3 text-muted">
+                Platform pembelajaran online yang menghubungkan siswa dengan mentor berkualitas.
+                Belajar dengan santai, jadwal fleksibel, dan pengalaman yang dipersonalisasi.
+              </p>
+              <div className="d-flex gap-3">
+                <a href="https://www.instagram.com/chill_ajar/" className="text-decoration-none" title="Instagram" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-instagram fs-4 text-muted"></i>
+                </a>
+                <a href="https://github.com/ekomh170" className="text-decoration-none" title="GitHub" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-github fs-4 text-muted"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/eko-muchamad-haryono" className="text-decoration-none" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-linkedin fs-4 text-muted"></i>
+                </a>
+                <a href="mailto:info@chillajar.com" className="text-decoration-none" title="Email">
+                  <i className="bi bi-envelope fs-4 text-muted"></i>
+                </a>
               </div>
             </div>
-            <div className="col-12">
-              <hr className="my-3" />
-              <p className="mb-0 small copyright">
-                &copy; 2025 Eko Muchamad Haryono - Tugas React JS | Dibuat dengan React & Bootstrap
+
+            {/* Quick Links */}
+            <div className="col-12 col-md-3 col-lg-2">
+              <h6 className="fw-bold mb-3 modern-title">Navigasi</h6>
+              <ul className="list-unstyled">
+                <li className="mb-2">
+                  <Link to="/" className="text-decoration-none text-muted">Beranda</Link>
+                </li>
+                <li className="mb-2">
+                  <Link to="/team" className="text-decoration-none text-muted">Tim Kami</Link>
+                </li>
+                <li className="mb-2">
+                  <Link to="/contact" className="text-decoration-none text-muted">Kontak</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="col-12 col-md-3 col-lg-3">
+              <h6 className="fw-bold mb-3 modern-title">Layanan</h6>
+              <ul className="list-unstyled">
+                <li className="mb-2 text-muted"><i className="bi bi-check-circle me-2"></i>Pencarian Mentor</li>
+                <li className="mb-2 text-muted"><i className="bi bi-check-circle me-2"></i>Booking Mudah</li>
+                <li className="mb-2 text-muted"><i className="bi bi-check-circle me-2"></i>Jadwal Fleksibel</li>
+                <li className="mb-2 text-muted"><i className="bi bi-check-circle me-2"></i>Pembayaran Aman</li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div className="col-12 col-md-6 col-lg-3">
+              <h6 className="fw-bold mb-3 modern-title">Kontak Kami</h6>
+              <ul className="list-unstyled">
+                <li className="mb-2 text-muted">
+                  <i className="bi bi-geo-alt me-2"></i>
+                  Jakarta Selatan, DKI Jakarta
+                </li>
+                <li className="mb-2 text-muted">
+                  <i className="bi bi-envelope me-2"></i>
+                  info@chillajar.com
+                </li>
+                <li className="mb-2 text-muted">
+                  <i className="bi bi-telephone me-2"></i>
+                  +62 812-3456-7890
+                </li>
+                <li className="mb-2 text-muted">
+                  <i className="bi bi-clock me-2"></i>
+                  Senin - Jumat, 09:00 - 18:00 WIB
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <hr className="my-4" />
+          <div className="row align-items-center">
+            <div className="col-12 col-md-6 text-center text-md-start">
+              <p className="mb-0 small text-muted">
+                &copy; 2025 ChillAjar. All rights reserved.
+              </p>
+            </div>
+            <div className="col-12 col-md-6 text-center text-md-end">
+              <p className="mb-0 small text-muted">
+                Dibuat dengan <i className="bi bi-heart-fill text-danger mx-1"></i> oleh Eko Muchamad Haryono
               </p>
             </div>
           </div>
@@ -76,8 +199,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="team" element={<Team />} />
+          <Route path="team/:memberId" element={<MemberDetail />} />
           <Route path="contact" element={<Contact />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

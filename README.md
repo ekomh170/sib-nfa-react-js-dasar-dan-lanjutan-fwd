@@ -34,5 +34,18 @@ Repository ini berisi kumpulan tugas-tugas yang dikerjakan selama mengikuti prog
   - Buat laporan dalam format PDF yang mencantumkan screenshot dan link GitHub.
   - Submit laporan sesuai instruksi LMS.
 
+### 🎯 Tugas 2: React JS Dasar dan Lanjutan - Pertemuan 2
+- **Branch**: `tugas2-reactjs-eko`
+- **GitHub Link**: [https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas2-reactjs-eko](https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas2-reactjs-eko)
+- **Status**: ✅ SUDAH SUBMIT
+- **Deadline**: Senin, 29 September 2025, 23:59
+- **Teknologi**: React JS, React Router, Vite, Bootstrap, JavaScript ES6
+- **Deskripsi**:
+  - Tambahkan routing untuk halaman **Team** dan **Contact** menggunakan React Router.
+  - Rapikan struktur routing sesuai kategori elemen (lihat dokumentasi: [React Router](https://reactrouter.com/start/declarative/routing)).
+  - Menambahkan styling pada navigasi (opsional, nilai tambahan).
+  - Push perubahan ke GitHub dan invite username mentor.
+  - Cantumkan link GitHub pada pengumpulan LMS.
+
 ---
 *Repository dibuat untuk program SIB Fullstack Web Developer (NFA) - Batch 2025*

@@ -51,7 +51,7 @@ Repository ini berisi kumpulan tugas-tugas yang dikerjakan selama mengikuti prog
 - **Kode Tugas**: RJS-2024228
 - **Branch**: `tugas3-reactjs-eko`
 - **GitHub Link**: [https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas3-reactjs-eko](https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas3-reactjs-eko)
-- **Status**: 🔄 SEDANG DIKERJAKAN
+- **Status**: ✅ SUDAH SUBMIT
 - **Deadline**: Rabu, 1 Oktober 2025, 23:59
 - **Teknologi**: React JS, Hooks, JavaScript ES6
 - **Deskripsi**:

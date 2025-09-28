@@ -24,7 +24,7 @@ Repository ini berisi kumpulan tugas-tugas yang dikerjakan selama mengikuti prog
 - **Branch**: `tugas1-reactjs-eko`
 - **GitHub Link**: [https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas1-reactjs-eko](https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas1-reactjs-eko)
 - **Status**: ✅ SUDAH SUBMIT
-- **Deadline**: 27 September 2025, 23:59
+- **Deadline**: Sabtu, 27 September 2025, 23:59
 - **Teknologi**: React JS, Vite, Bootstrap, JavaScript ES6
 - **Deskripsi**: 
   - Rapihkan halaman Home (ubah konten teks dan gambar sesuai kreativitas).

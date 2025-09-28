@@ -16,16 +16,11 @@
 
 **Identitas Tugas:**
 
-* **Kode Tugas**: RJS-2024228
 * **Nama**: Eko Muchamad Haryono
 * **NIM**: 0110223079
 * **Topik**: React JS Dasar dan Lanjutan - Pertemuan 3
 * **Group**: 2
-* **Branch**: tugas3-reactjs-eko
-* **GitHub Link**: [https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas3-reactjs-eko](https://github.com/ekomh170/sib-nfa-react-js-dasar-dan-lanjutan-fwd/tree/tugas3-reactjs-eko)
-* **Status**: 🔄 SEDANG DIKERJAKAN
 * **Deadline**: Rabu, 1 Oktober 2025, 23:59
-* **Teknologi**: React JS, Hooks, JavaScript ES6
 
 **Deskripsi Tugas:**
 
